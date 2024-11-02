@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+import rospy
+from std_msgs.msg import Int32
+def fun():
+    rospy.init_node("node3", anonymous=True)
+    pub = rospy.Publisher("topic3", Int32, queue_size=10)
+    rate = rospy.Rate(2)
+    while not rospy.is_shutdown():
+        val1 = Int32()
+        val1.data=4
+        pub.publish(val1)
+        rate.sleep()
+if __name__ == "__main__":
+    fun()
